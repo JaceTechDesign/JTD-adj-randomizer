@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 import random
 
@@ -19,5 +20,6 @@ responses = [
 def get_random_response():
     return jsonify(random.choice(responses))
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 8080))  # Read the port from the environment
+    app.run(host="0.0.0.0", port=port)
